@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Birthday Card</string>
+    <string name="happy_birthday_text">Happy Birthday</string>
+    <string name="exclamation_point">!</string>
+    <string name="signature_text">From</string>
+    <string name="title_activity_birthday_card_form">BirthdayCardForm</string>
+    <string name="title_activity_birthday_card">BirthdayCard</string>
+    <string name="birthday_form_title">Create a Birthday Card</string>
+    <string name="card_recipient_prompt">Whose birthday is it?</string>
+    <string name="card_sender_prompt">Who is this card from?</string>
+    <string name="card_sender_key">Birthday Card Sender Name</string>
+    <string name="card_recipient_key">Birthday Card Recipient Name</string>
+    <string name="error_field_empty">Field cannot be empty</string>
+    <string name="title_activity_example">ExampleActivity</string>
+</resources>
