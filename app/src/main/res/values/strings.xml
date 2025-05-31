@@ -1,15 +1,25 @@
 <resources>
-    <string name="app_name">Birthday Card</string>
-    <string name="happy_birthday_text">Happy Birthday</string>
-    <string name="exclamation_point">!</string>
-    <string name="signature_text">From</string>
+    <string name="app_name">Greeting Cards</string>
+    <string name="text_happy_birthday">Happy Birthday</string>
+    <string name="text_exclamation_point">!</string>
+    <string name="text_signature">From</string>
     <string name="title_activity_birthday_card_form">BirthdayCardForm</string>
     <string name="title_activity_birthday_card">BirthdayCard</string>
-    <string name="birthday_form_title">Create a Birthday Card</string>
-    <string name="card_recipient_prompt">Whose birthday is it?</string>
-    <string name="card_sender_prompt">Who is this card from?</string>
-    <string name="card_sender_key">Birthday Card Sender Name</string>
-    <string name="card_recipient_key">Birthday Card Recipient Name</string>
+    <string name="title_birthday_form">Create a Birthday Card</string>
+    <string name="text_card_recipient_field">Whose birthday is it?</string>
+    <string name="text_card_sender_field">Who is this card from?</string>
+    <string name="key_birthday_card_sender">Birthday Card Sender Name</string>
+    <string name="key_birthday_card_recipient">Birthday Card Recipient Name</string>
     <string name="error_field_empty">Field cannot be empty</string>
-    <string name="title_activity_example">ExampleActivity</string>
+    <string name="button_create">Create</string>
+    <string name="option_birthday">Birthday</string>
+    <string name="option_wedding">Wedding</string>
+    <string name="option_none_selected">Select Card Type</string>
+    <string name="title_greeting_card_form">Create a Greeting Card</string>
+    <string name="title_activity_wedding_card">WeddingCard</string>
+    <string name="key_wedding_card_sender">Wedding Card Sender Name</string>
+    <string name="key_wedding_card_first_recipient">Wedding Card First Recipient Name</string>
+    <string name="key_wedding_card_second_recipient">Wedding Card Second Recipient Name</string>
+    <string name="text_happy_wedding">Happy Wedding</string>
+    <string name="text_and">and</string>
 </resources>

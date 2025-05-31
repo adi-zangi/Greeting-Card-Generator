@@ -1,4 +1,4 @@
-package com.example.greetingcard
+package com.example.greetingcard.client.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,25 +22,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.greetingcard.ui.theme.BirthdayCardTheme
+import com.example.greetingcard.R
+import com.example.greetingcard.ui.theme.GreetingCardTheme
 
-/*
-    Displays a birthday card with the sender and recipient from the
-    Birthday Form
- */
-
-class BirthdayCard : ComponentActivity() {
+class WeddingCard : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            BirthdayCardTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    BirthdayCard(
-                        intent = intent
+            GreetingCardTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    WeddingCard(
+                        intent = intent,
+                        modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
@@ -50,12 +43,13 @@ class BirthdayCard : ComponentActivity() {
 }
 
 @Composable
-fun BirthdayCard(intent: Intent, modifier: Modifier = Modifier) {
+fun WeddingCard(intent: Intent, modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.party)
     val senderName = getSenderName(intent)
-    val recipientName = getRecipientName(intent)
-    val message = getBirthdayMessage(recipientName)
-    val from = getBirthdaySignature(senderName)
+    val firstRecipientName = getFirstRecipientName(intent)
+    val secondRecipientName = getSecondRecipientName(intent)
+    val message = getWeddingMessage(firstRecipientName, secondRecipientName)
+    val from = getWeddingSignature(senderName)
 
     Box(modifier) {
         Image(
@@ -64,7 +58,7 @@ fun BirthdayCard(intent: Intent, modifier: Modifier = Modifier) {
             contentScale = ContentScale.Crop,
             alpha = 0.75F
         )
-        BirthdayText(
+        WeddingText(
             message = message,
             from = from,
             modifier = Modifier
@@ -75,7 +69,7 @@ fun BirthdayCard(intent: Intent, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BirthdayText(message: String, from: String, modifier: Modifier = Modifier) {
+fun WeddingText(message: String, from: String, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
@@ -89,6 +83,7 @@ fun BirthdayText(message: String, from: String, modifier: Modifier = Modifier) {
         Text(
             text = from,
             fontSize = 36.sp,
+            lineHeight = 52.sp,
             modifier = Modifier
                 .padding(16.dp)
                 .align(alignment = Alignment.End)
@@ -97,26 +92,35 @@ fun BirthdayText(message: String, from: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun getSenderName(i: Intent) : String {
-    return i.getStringExtra(stringResource(R.string.card_sender_key)) ?: ""
+private fun getSenderName(i: Intent) : String {
+    return i.getStringExtra(stringResource(R.string.key_wedding_card_sender)) ?: ""
 }
 
 @Composable
-fun getRecipientName(i: Intent) : String {
-    return i.getStringExtra(stringResource(R.string.card_recipient_key)) ?: ""
+private fun getFirstRecipientName(i: Intent) : String {
+    return i.getStringExtra(stringResource(R.string.key_wedding_card_first_recipient)) ?: ""
 }
 
 @Composable
-fun getBirthdayMessage(recipientName: String) : String {
-    return String.format("%s %s%s",
-        stringResource(R.string.happy_birthday_text),
-        recipientName,
-        stringResource(R.string.exclamation_point))
+private fun getSecondRecipientName(i: Intent) : String {
+    return i.getStringExtra(stringResource(R.string.key_wedding_card_second_recipient)) ?: ""
 }
 
 @Composable
-fun getBirthdaySignature(senderName: String) : String {
+private fun getWeddingMessage(firstRecipientName: String,
+                               secondRecipientName: String) : String {
+    return String.format("%s %s %s %s%s",
+        stringResource(R.string.text_happy_wedding),
+        firstRecipientName,
+        stringResource(R.string.text_and),
+        secondRecipientName,
+        stringResource(R.string.text_exclamation_point)
+    )
+}
+
+@Composable
+private fun getWeddingSignature(senderName: String) : String {
     return String.format("%s %s",
-        stringResource(R.string.signature_text),
+        stringResource(R.string.text_signature),
         senderName)
 }
